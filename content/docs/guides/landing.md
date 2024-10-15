@@ -6,6 +6,7 @@ date: 2024-10-15T21:39:05+02:00
 lastmod: 2024-10-15T21:39:05+02:00
 draft: false
 weight: 0
+pinned: true
 toc: false
 seo:
   title: "Landing page" # custom title (optional)

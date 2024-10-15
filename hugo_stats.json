@@ -24,6 +24,7 @@
       "h5",
       "head",
       "header",
+      "hr",
       "html",
       "img",
       "input",
@@ -48,9 +49,15 @@
       "style",
       "summary",
       "svg",
+      "table",
+      "tbody",
+      "td",
       "template",
+      "th",
+      "thead",
       "time",
       "title",
+      "tr",
       "ul"
     ],
     "classes": [
@@ -255,6 +262,8 @@
       "TableOfContents",
       "buttonColorMode",
       "doks-docs-nav",
+      "fazit-open-source-als-zukunft-der-it",
+      "flexibilität-anpassungen-wann-immer-nötig",
       "further-reading",
       "h-rh-i-0",
       "h-rh-i-1",
@@ -262,11 +271,15 @@
       "h-rh-i-3",
       "h-rh-i-4",
       "h-rh-i-5",
+      "kostenersparnis-keine-versteckten-gebühren",
       "looking-glass",
       "offcanvasNavMain",
       "offcanvasNavMainLabel",
       "offcanvasNavSection",
       "offcanvasNavSectionLabel",
+      "open-source-als-lernplattform",
+      "open-source-warum-ich-konsequent-auf-freie-software-setze",
+      "proprietäre-software-nicht-immer-die-beste-wahl",
       "query",
       "search-form",
       "searchModal",
@@ -274,10 +287,12 @@
       "searchResults",
       "searchToggleDesktop",
       "searchToggleMobile",
+      "sicherheit-und-transparenz",
       "socialMenu",
       "this-is-the-landing-page-for-the-pdocs",
       "toTop",
-      "toc"
+      "toc",
+      "warum-microsoft-edge-keine-gute-wahl-ist"
     ]
   }
 }
