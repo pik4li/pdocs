@@ -14,7 +14,13 @@ seo:
   noindex: false # false (default) or true
 ---
 
-The hidden_kvm state enables you to install the NVIDIA drivers in the vm. Edit the xml file of the desired Windows-VM.
+## GPU-Passthrough
+
+For GPU-Passthrough in qemu it's **important** to know, that you first need a NVIDIA GPU and for the drivers to work, you have to do some things in the xml file of the VM you're trying to pass the GPU through.
+
+The first two big things here are the [kvm hidden flag](#the-hidden-kvm-flag) and the [hyperv vendor_id](#vendor_id). After this, you can install the NVIDIA drivers inside your VM. If you don't follow these steps, your VM will not have the full power with the GPU, and you might not even be able to install the drivers, due to virtual limitations.
+
+### the hidden kvm flag
 
 ```xml
 <features>
@@ -25,10 +31,9 @@ The hidden_kvm state enables you to install the NVIDIA drivers in the vm. Edit t
   ...
 </features>
 
-
 ```
 
-The vendor id also has to be present, to ensure the NVIDIA driver can be installed.
+### vendor_id
 
 ```xml
 <features>
@@ -39,7 +44,16 @@ The vendor id also has to be present, to ensure the NVIDIA driver can be install
   ...
 </features>
 
+```
 
+## virtualization support
+
+To get things like WSL to work under qemu in linux, you can add the following feature to your xml:
+
+<!-- ### virtualization support -->
+
+```xml
+<feature policy='require' name='vmx' />
 ```
 
 ## looking-glass

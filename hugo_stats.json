@@ -265,6 +265,7 @@
       "fazit-open-source-als-zukunft-der-it",
       "flexibilität-anpassungen-wann-immer-nötig",
       "further-reading",
+      "gpu-passthrough",
       "h-rh-i-0",
       "h-rh-i-1",
       "h-rh-i-2",
@@ -289,9 +290,12 @@
       "searchToggleMobile",
       "sicherheit-und-transparenz",
       "socialMenu",
+      "the-hidden-kvm-flag",
       "this-is-the-landing-page-for-the-pdocs",
       "toTop",
       "toc",
+      "vendor_id",
+      "virtualization-support",
       "warum-microsoft-edge-keine-gute-wahl-ist"
     ]
   }
