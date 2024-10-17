@@ -1,5 +1,5 @@
 title = "pDocs"
-baseurl = "http://localhost/"
+baseurl = "https://doku.pieck-performance.it/"
 canonifyURLs = true
 disableAliases = true
 disableHugoGeneratorInject = true
