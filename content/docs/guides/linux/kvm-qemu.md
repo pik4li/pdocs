@@ -1,5 +1,5 @@
 ---
-title: "KVM QEMU GPU Passthrough Guide"
+title: "KVM QEMU - Guide"
 description: "A guide to setting up GPU passthrough with KVM and QEMU, enabling virtualization support, and configuring Looking Glass."
 summary: "Learn how to set up GPU passthrough with NVIDIA GPUs in KVM/QEMU, configure vendor flags, enable virtualization for WSL, and optimize Looking Glass for high resolutions and refresh rates."
 date: 2024-10-15T20:51:42+02:00
