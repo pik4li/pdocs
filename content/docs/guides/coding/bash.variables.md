@@ -169,22 +169,18 @@ user="${USER:-defaultuser}"
 
 #### 3. **String Manipulation**
 
-- Remove file extension: ```bash
+- Remove file extension:
+
+```bash
   filename="document.txt"
   echo "${filename%.txt}"
 
-  ```
+```
 
-  ```
+- Get the last part of a path:
 
-- Get the last part of a path: ```bash
+```bash
   path="/usr/local/bin"
   echo "${path##\*/}" # Outputs "bin"
 
-  ```
-
-  ```
-
-### Conclusion
-
-Bash parameter expansion is a flexible tool for handling variable values. Whether you're providing default values, slicing strings, or performing pattern matching, it enables efficient and expressive scripting.
+```
