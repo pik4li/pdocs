@@ -1,5 +1,5 @@
 ---
-title: "Variables"
+title: "bash.Variables"
 description: ""
 summary: ""
 date: 2024-10-16T09:12:17+02:00

@@ -14,112 +14,304 @@ seo:
   noindex: false # false (default) or true
 ---
 
-#### ncdu - NCurses Disk Usage
+## **Disk Usage & System Overview Tools**
 
-With ncdu an overview of the used space for all folders can be displayed very quickly:
+### **1. ncdu - NCurses Disk Usage**
+
+`ncdu` is a fast and easy-to-use tool that provides an overview of disk usage. It helps in visualizing and managing disk space.
+
+#### Installation:
+
+{{< tabs >}}
+{{< tab "Debian/Ubuntu" >}}
 
 ```bash
 sudo apt install ncdu
-
 ```
 
-After Installation for example the Root-Partition can be scanned using the following command:
+{{< /tab >}}
+{{< tab "Fedora" >}}
+
+```bash
+sudo dnf install ncdu
+```
+
+{{< /tab >}}
+{{< tab "OpenSuse" >}}
+
+```bash
+sudo zypper install ncdu
+```
+
+{{< /tab >}}
+{{< tab "Arch" >}}
+
+```bash
+sudo pacman -S ncdu
+```
+
+{{< /tab >}}
+{{< /tabs >}}
+
+#### Usage:
 
 ```bash
 sudo ncdu / -x
-
 ```
 
-The Parameter -x excludes other mounted Disks (Do not cross filesystem boundaries, i.e. only count files and directories on the same filesystem as the directory being scanned.)
+- `-x` ensures that only the current filesystem is scanned.
 
 ---
 
-## **bat || better than cat**
+## **2. bat - A Better `cat`**
 
-<details><summary>Preview</summary>
+`bat` is a better alternative to `cat`, with syntax highlighting, line numbers, and paging capabilities.
 
-```ruby
-───────┬─────────────────────────────────────────────────────────────────────────────────────────────
-       │ File: docker-compose.yml
-───────┼─────────────────────────────────────────────────────────────────────────────────────────────
-   1   │ version: "3.8"
-   2   │ services:
-   3   │   dashy:
-   4   │     image: lissy93/dashy
-   5   │     container_name: Dashy
-   6   │     # Pass in your config file below, by specifying the path on your host machine
-   7   │     volumes:
-   8   │       - ./data/conf.yml:/app/public/conf.yml
-   9   │     ports:
-  10   │       - 9000:80
-  11   │     # Set any environmental variables
-  12   │     environment:
-  13   │       - NODE_ENV=production
-  14   │     # Specify your user ID and group ID. You can find this by running `id -u` and `id -g`
-  15   │       - UID=1000
-  16   │       - GID=1000
-  17   │     # Specify restart policy
-  18   │     restart: unless-stopped
-  19   │     # Configure healthchecks
-  20   │     healthcheck:
-  21   │       test: ['CMD', 'node', '/app/services/healthcheck']
-  22   │       interval: 1m30s
-  23   │       timeout: 10s
-  24   │       retries: 3
-  25   │       start_period: 40s
-───────┴─────────────────────────────────────────────────────────────────────────────────────────────
+#### Installation:
 
-```
-
-</details>
-
-##### Overview
-
-"bat" is just the better cat. It's colorful and a bit more stylish. Be sure to use it either with an Alias which automatically sets you the <span style="color: rgb(230, 126, 35);">"**--paging=never**"</span> flag or remember to use the flag by yourself.
-
----
-
-## **Pfetch**
-
-<details><summary>Preview</summary>
-
-```julia
-root@srv-docker ~# pfetch
-         _    root@srv-docker
-     ---(_)   os     Ubuntu 23.04
- _/  ---  \   host   OptiPlex 3050
-(_) |   |     kernel 5.15.102-1-pve
-  \  --- _/   uptime 4d 13h 57m
-     ---(_)   pkgs   439
-              memory 1051M / 6144M
-
-```
-
-```kotlin
-╭─piecka@srvdocker /root  ‹system›
-╰─$ pfetch
-  _____      piecka@srvdocker
- /  __ \     os     Debian GNU/Linux 12 (bookworm)
-|  /    |    host   OptiPlex 3050
-|  \___-     kernel 6.2.16-4-pve
--_           uptime 17h 7m
-  --_        pkgs   481
-             memory 1159M / 12288M
-
-
-```
-
-</details>
-
-#### Installation
-
-Dependencies:
-
-- git
+{{< tabs >}}
+{{< tab "Debian/Ubuntu" >}}
 
 ```bash
-git clone https://github.com/dylanaraps/pfetch.git && sudo cp pfetch/pfetch /bin/ && sudo rm -r pfetch/ && pfetch
+sudo apt install bat
+```
 
+{{< /tab >}}
+{{< tab "Fedora" >}}
+
+```bash
+sudo dnf install bat
+```
+
+{{< /tab >}}
+{{< tab "OpenSuse" >}}
+
+```bash
+sudo zypper install bat
+```
+
+{{< /tab >}}
+{{< tab "Arch" >}}
+
+```bash
+sudo pacman -S bat
+```
+
+{{< /tab >}}
+{{< /tabs >}}
+
+#### Usage:
+
+```bash
+bat <file>
+```
+
+For convenience, use the following alias:
+
+```bash
+alias bat="bat --paging=never"
 ```
 
 ---
+
+## **3. Pfetch - Minimal System Information**
+
+`Pfetch` is a minimal and customizable system information tool.
+
+#### Installation:
+
+```bash
+git clone https://github.com/dylanaraps/pfetch.git
+sudo cp pfetch/pfetch /bin/
+sudo rm -r pfetch/
+```
+
+#### Usage:
+
+```bash
+pfetch
+```
+
+---
+
+## **4. exa - Modern Replacement for `ls`**
+
+`exa` is a modern alternative to `ls`, with features like tree views and file type icons.
+
+#### Installation:
+
+{{< tabs >}}
+{{< tab "Debian/Ubuntu" >}}
+
+```bash
+sudo apt install exa
+```
+
+{{< /tab >}}
+{{< tab "Fedora" >}}
+
+```bash
+sudo dnf install exa
+```
+
+{{< /tab >}}
+{{< tab "OpenSuse" >}}
+
+```bash
+sudo zypper install exa
+```
+
+{{< /tab >}}
+{{< tab "Arch" >}}
+
+```bash
+sudo pacman -S exa
+```
+
+{{< /tab >}}
+{{< /tabs >}}
+
+#### Usage:
+
+```bash
+exa -la
+```
+
+---
+
+## **5. fzf - Fuzzy Finder**
+
+`fzf` is an interactive fuzzy search tool.
+
+#### Installation:
+
+{{< tabs >}}
+{{< tab "Debian/Ubuntu" >}}
+
+```bash
+sudo apt install fzf
+```
+
+{{< /tab >}}
+{{< tab "Fedora" >}}
+
+```bash
+sudo dnf install fzf
+```
+
+{{< /tab >}}
+{{< tab "OpenSuse" >}}
+
+```bash
+sudo zypper install fzf
+```
+
+{{< /tab >}}
+{{< tab "Arch" >}}
+
+```bash
+sudo pacman -S fzf
+```
+
+{{< /tab >}}
+{{< /tabs >}}
+
+#### Usage:
+
+```bash
+fzf
+```
+
+---
+
+## **6. htop - Interactive Process Viewer**
+
+`htop` is an interactive process viewer with a user-friendly interface.
+
+#### Installation:
+
+{{< tabs >}}
+{{< tab "Debian/Ubuntu" >}}
+
+```bash
+sudo apt install htop
+```
+
+{{< /tab >}}
+{{< tab "Fedora" >}}
+
+```bash
+sudo dnf install htop
+```
+
+{{< /tab >}}
+{{< tab "OpenSuse" >}}
+
+```bash
+sudo zypper install htop
+```
+
+{{< /tab >}}
+{{< tab "Arch" >}}
+
+```bash
+sudo pacman -S htop
+```
+
+{{< /tab >}}
+{{< /tabs >}}
+
+#### Usage:
+
+```bash
+htop
+```
+
+---
+
+## **7. tldr - Simplified Command Documentation**
+
+`tldr` provides simplified and concise examples of common commands.
+
+#### Installation:
+
+{{< tabs >}}
+{{< tab "Debian/Ubuntu" >}}
+
+```bash
+sudo apt install tldr
+```
+
+{{< /tab >}}
+{{< tab "Fedora" >}}
+
+```bash
+sudo dnf install tldr
+```
+
+{{< /tab >}}
+{{< tab "OpenSuse" >}}
+
+```bash
+sudo zypper install tldr
+```
+
+{{< /tab >}}
+{{< tab "Arch" >}}
+
+```bash
+sudo pacman -S tldr
+```
+
+{{< /tab >}}
+{{< /tabs >}}
+
+#### Usage:
+
+```bash
+tldr <command>
+```
+
+---
+
+This structure with tabs allows users of different distributions to easily find the installation commands for the package managers they use. Let me know if you'd like any further refinements!

@@ -1,75 +1,100 @@
 ---
-title: "Kvm Qemu"
-description: ""
-summary: ""
+title: "KVM QEMU GPU Passthrough Guide"
+description: "A guide to setting up GPU passthrough with KVM and QEMU, enabling virtualization support, and configuring Looking Glass."
+summary: "Learn how to set up GPU passthrough with NVIDIA GPUs in KVM/QEMU, configure vendor flags, enable virtualization for WSL, and optimize Looking Glass for high resolutions and refresh rates."
 date: 2024-10-15T20:51:42+02:00
 lastmod: 2024-10-15T20:51:42+02:00
 draft: false
 weight: 999
 toc: true
 seo:
-  title: "kvm-qemu" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
+  title: "KVM QEMU GPU Passthrough Setup"
+  description: "A comprehensive guide to GPU passthrough with KVM/QEMU, configuring NVIDIA GPUs, and optimizing Looking Glass."
+  canonical: ""
+  noindex: false
 ---
 
-## GPU-Passthrough
+# **KVM QEMU: GPU Passthrough and Virtualization Support**
 
-For GPU-Passthrough in qemu it's **important** to know, that you first need a NVIDIA GPU and for the drivers to work, you have to do some things in the xml file of the VM you're trying to pass the GPU through.
+This guide covers essential steps for setting up GPU passthrough in a KVM/QEMU virtual machine with an NVIDIA GPU. It also details enabling virtualization support and configuring Looking Glass for enhanced performance.
 
-The first two big things here are the [kvm hidden flag](#the-hidden-kvm-flag) and the [hyperv vendor_id](#vendor_id). After this, you can install the NVIDIA drivers inside your VM. If you don't follow these steps, your VM will not have the full power with the GPU, and you might not even be able to install the drivers, due to virtual limitations.
+---
 
-### the hidden kvm flag
+## **1. GPU Passthrough Setup**
 
-```xml
-<features>
-  ...
-<kvm>
-  <hidden state="on"/>
-</kvm>
-  ...
-</features>
+When setting up GPU passthrough in QEMU, **two key elements** need attention for NVIDIA GPUs: the [hidden KVM flag](#the-hidden-kvm-flag) and the [vendor ID for Hyper-V](#vendor_id).
 
-```
+Without properly configuring these elements, the VM will not recognize or fully utilize the GPU's power, and installing NVIDIA drivers may fail due to virtualization restrictions.
 
-### vendor_id
+### **1.1. Hidden KVM Flag**
+
+Enabling the hidden KVM flag prevents NVIDIA drivers from detecting the virtual machine, allowing the GPU passthrough to work correctly.
 
 ```xml
 <features>
   ...
-<hyperv>
-   <vendor_id state="on" value="whatever"/>
-</hyperv>
+  <kvm>
+    <hidden state="on"/>
+  </kvm>
   ...
 </features>
-
 ```
 
-## virtualization support
+### **1.2. Vendor ID for Hyper-V**
 
-To get things like WSL to work under qemu in linux, you can add the following feature to your xml:
-
-<!-- ### virtualization support -->
+Set a custom `vendor_id` in the XML file of your VM. This helps in fooling the drivers into thinking the VM is running on actual hardware.
 
 ```xml
-<feature policy='require' name='vmx' />
+<features>
+  ...
+  <hyperv>
+    <vendor_id state="on" value="whatever"/>
+  </hyperv>
+  ...
+</features>
 ```
 
-## looking-glass
+---
 
-Use this with you looking glass config to enable more resolutions and higher refresh rates! Be sure to disable the memballoon thing. This was the problem the last times for me, when i couldnt get my 3440x1440 monitor to work.
+## **2. Enabling Virtualization Support**
+
+To run certain features like **Windows Subsystem for Linux (WSL)** within your virtual machine, ensure that **Intel VT-x** or **AMD-V** virtualization support is enabled. This can be done by adding the following line to your XML configuration:
+
+```xml
+<feature policy='require' name='vmx'/>
+```
+
+---
+
+## **3. Optimizing Looking Glass for High Resolutions**
+
+**Looking Glass** is a tool that allows you to share the GPU between the host and guest, providing a smooth KVM experience without needing a second monitor.
+
+### **3.1. Disabling Memory Ballooning**
+
+In some cases, **memory ballooning** may prevent Looking Glass from working with higher resolutions (such as 3440x1440). You can disable this feature in your VM’s XML configuration:
 
 ```xml
 <devices>
-..
-<memballoon model="none"/>
-    <shmem name="looking-glass">
-      <model type="ivshmem-plain"/>
-      <size unit="M">128</size>
-      <address type="pci" domain="0x0000" bus="0x10" slot="0x01" function="0x0"/>
-    </shmem>
+  ...
+  <memballoon model="none"/>
+  <shmem name="looking-glass">
+    <model type="ivshmem-plain"/>
+    <size unit="M">128</size>
+    <address type="pci" domain="0x0000" bus="0x10" slot="0x01" function="0x0"/>
+  </shmem>
 </devices>
-
-
 ```
+
+By disabling `memballoon`, you should be able to get higher refresh rates and more resolutions to work seamlessly.
+
+---
+
+### **Tips & Troubleshooting**
+
+- **NVIDIA Code 43**: If you encounter this error when using an NVIDIA GPU, ensure the hidden KVM flag is properly configured.
+- **Looking Glass Performance**: Adjust the shared memory size in the `shmem` section to fine-tune performance. Increasing this may improve the VM's ability to handle high frame rates and resolutions.
+
+---
+
+This guide should help you configure your virtual machines with KVM/QEMU to achieve GPU passthrough with optimal performance. Let me know if you need further adjustments or additional sections.
