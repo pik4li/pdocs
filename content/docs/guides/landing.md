@@ -22,16 +22,22 @@ Willkommen in unserem umfassenden Dokumentations-Hub. Hier finden Sie alle Resso
 ## Dokumentationskategorien
 
 ### [Linux-Anleitungen](/docs/guides/linux)
+
 Entdecken Sie unsere Linux-bezogenen Anleitungen und Tools:
+
 - [CLI-Tools](/docs/guides/linux/cli-tools): Lernen Sie wichtige Kommandozeilen-Tools für Festplattennutzung, Systeminformationen und mehr kennen.
-- [KVM QEMU](/docs/guides/linux/kvm-qemu): Detaillierte Anleitung zur Einrichtung von GPU-Passthrough mit KVM und QEMU, einschließlich Virtualisierungsunterstützung und Looking Glass-Konfiguration.
+- [KVM QEMU](/docs/guides/linux/kvm-qemu-guide): Detaillierte Anleitung zur Einrichtung von GPU-Passthrough mit KVM und QEMU, einschließlich Virtualisierungsunterstützung und Looking Glass-Konfiguration.
 
 ### [Windows (Windoof) Anleitungen](/docs/guides/windoof)
+
 Finden Sie hilfreiche Informationen für Windows-Benutzer:
+
 - [Windows Edition ändern](/docs/guides/windoof/windows-edition-change): Schritt-für-Schritt-Anleitung zum Upgrade von Windows 10 Home auf Windows 10 Pro mit Produktschlüsseln.
 
 ### [Programmier-Anleitungen](/docs/guides/coding)
+
 Verbessern Sie Ihre Programmierkenntnisse mit unseren Anleitungen:
+
 - [Bash-Variablen](/docs/guides/coding/bash.variables): Umfassende Erklärung der Bash-Parametererweiterung und Techniken zur Variablenmanipulation.
 
 ## Brauchen Sie Hilfe?
